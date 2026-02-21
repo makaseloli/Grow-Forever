@@ -1,0 +1,21 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "io.github.makaseloli.grow_forever.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "grow_forever.refmap.json",
+  "mixins": [
+    "BambooStalkBlockMixin",
+    "CactusBlockMixin",
+    "GrowingPlantHeadBlockMixin",
+    "SugarCaneBlockMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
+}
