@@ -23,7 +23,7 @@ public abstract class BambooStalkBlockMixin {
 
         while (level.getBlockState(cursor).is(Blocks.BAMBOO)) {
             ++height;
-            if (cursor.getY() <= level.getMinBuildHeight()) {
+            if (cursor.getY() <= level.getMinY()) {
                 break;
             }
             cursor = cursor.below();
@@ -38,7 +38,7 @@ public abstract class BambooStalkBlockMixin {
 
         while (level.getBlockState(cursor).is(Blocks.BAMBOO)) {
             ++height;
-            if (cursor.getY() >= level.getMaxBuildHeight() - 1) {
+            if (cursor.getY() >= level.getMaxY()) {
                 break;
             }
             cursor = cursor.above();
@@ -55,9 +55,9 @@ public abstract class BambooStalkBlockMixin {
         BlockPos abovePos = pos.above();
         if (level.isEmptyBlock(abovePos) && level.getRawBrightness(abovePos, 0) >= 9) {
             int height = growForever$countBambooBelow(level, pos) + 1;
-            if (net.minecraftforge.common.ForgeHooks.onCropsGrowPre(level, pos, state, random.nextInt(3) == 0)) {
+            if (net.neoforged.neoforge.common.CommonHooks.canCropGrow(level, pos, state, random.nextInt(3) == 0)) {
                 this.growBamboo(state, level, pos, random, height);
-                net.minecraftforge.common.ForgeHooks.onCropsGrowPost(level, pos, state);
+                net.neoforged.neoforge.common.CommonHooks.fireCropGrowPost(level, pos, state);
             }
         }
         ci.cancel();
@@ -69,7 +69,7 @@ public abstract class BambooStalkBlockMixin {
     }
 
     @Inject(method = "isValidBonemealTarget", at = @At("HEAD"), cancellable = true)
-    private void growForever$isValidBonemealTargetIgnoreHeight(LevelReader level, BlockPos pos, BlockState state, boolean isClient, CallbackInfoReturnable<Boolean> cir) {
+    private void growForever$isValidBonemealTargetIgnoreHeight(LevelReader level, BlockPos pos, BlockState state, CallbackInfoReturnable<Boolean> cir) {
         int above = growForever$countBambooAbove(level, pos);
         BlockPos topPos = pos.above(above);
         cir.setReturnValue(level.isEmptyBlock(topPos.above()));
