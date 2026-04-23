@@ -2,7 +2,7 @@
   "required": true,
   "minVersion": "0.8",
   "package": "io.github.makaseloli.grow_forever.mixin",
-  "compatibilityLevel": "JAVA_8",
+  "compatibilityLevel": "JAVA_25",
   "mixins": [
     "BambooStalkBlockMixin",
     "CactusBlockMixin",

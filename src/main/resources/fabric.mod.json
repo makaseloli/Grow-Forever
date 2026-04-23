@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "${mod_id}",
+  "version": "${mod_version}",
+  "name": "${mod_name}",
+  "description": "${mod_description}",
+  "authors": [
+    "${mod_authors}"
+  ],
+  "license": "${mod_license}",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "io.github.makaseloli.grow_forever.Grow_forever"
+    ]
+  },
+  "mixins": [
+    "${mod_id}.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": "${loader_version_range}",
+    "minecraft": "${minecraft_version_range}",
+    "java": ">=25"
+  }
+}

@@ -55,9 +55,8 @@ public abstract class BambooStalkBlockMixin {
         BlockPos abovePos = pos.above();
         if (level.isEmptyBlock(abovePos) && level.getRawBrightness(abovePos, 0) >= 9) {
             int height = growForever$countBambooBelow(level, pos) + 1;
-            if (net.neoforged.neoforge.common.CommonHooks.canCropGrow(level, pos, state, random.nextInt(3) == 0)) {
+            if (random.nextInt(3) == 0) {
                 this.growBamboo(state, level, pos, random, height);
-                net.neoforged.neoforge.common.CommonHooks.fireCropGrowPost(level, pos, state);
             }
         }
         ci.cancel();
