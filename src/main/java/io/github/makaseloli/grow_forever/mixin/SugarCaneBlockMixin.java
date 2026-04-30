@@ -1,6 +1,6 @@
 package io.github.makaseloli.grow_forever.mixin;
 
-import net.minecraft.world.level.block.SugarCaneBlock;
+import net.minecraft.block.SugarCaneBlock;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;

@@ -20,6 +20,6 @@
   "depends": {
     "fabricloader": "${loader_version_range}",
     "minecraft": "${minecraft_version_range}",
-    "java": ">=25"
+    "java": ">=17"
   }
 }

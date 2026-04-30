@@ -1,6 +1,6 @@
 package io.github.makaseloli.grow_forever.mixin;
 
-import net.minecraft.world.level.block.CactusBlock;
+import net.minecraft.block.CactusBlock;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
