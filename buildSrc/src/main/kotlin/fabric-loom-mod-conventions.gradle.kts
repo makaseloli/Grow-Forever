@@ -1,3 +1,5 @@
+import net.meatwo310.mdk.build.*
+
 plugins {
     id("fabric-mod-conventions")
     id("net.fabricmc.fabric-loom")
@@ -17,15 +19,16 @@ loom {
         create(modId) {
             sourceSet(sourceSets.main.get())
             sourceSet(sourceSets.named("client").get())
-            sourceSet(project(sharedCommonProject).sourceSets.main.get())
             sourceSet(project(commonProject).sourceSets.main.get())
+            sourceSet(project(sharedCommonProject).sourceSets.main.get())
         }
     }
 
     runs.configureEach {
-        ideConfigGenerated(true)
+        generateRunConfig.set(true)
+        preferGradleTask.set(true)
         if (name == "gameTest") {
-            vmArg("-Dfabric.log.level=debug")
+            jvmArguments.add("-Dfabric.log.level=debug")
         }
     }
 }

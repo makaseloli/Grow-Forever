@@ -1,3 +1,8 @@
+import net.meatwo310.mdk.build.VersionCatalogLibrary
+import net.meatwo310.mdk.build.library
+import net.meatwo310.mdk.build.module
+import net.meatwo310.mdk.build.versionCatalog
+
 plugins {
     id("fabric-mod-conventions")
     id("net.fabricmc.fabric-loom-remap")
@@ -19,13 +24,17 @@ loom {
         create(modId) {
             sourceSet(sourceSets.main.get())
             sourceSet(sourceSets.named("client").get())
-            sourceSet(project(sharedCommonProject).sourceSets.main.get())
             sourceSet(project(commonProject).sourceSets.main.get())
+            sourceSet(project(sharedCommonProject).sourceSets.main.get())
         }
     }
 
     runs.configureEach {
-        ideConfigGenerated(true)
+        generateRunConfig.set(true)
+        preferGradleTask.set(true)
+        if (name == "gameTest") {
+            jvmArguments.add("-Dfabric.log.level=debug")
+        }
     }
 }
 

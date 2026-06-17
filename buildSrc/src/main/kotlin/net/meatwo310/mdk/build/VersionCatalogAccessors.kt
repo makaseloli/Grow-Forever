@@ -1,12 +1,18 @@
+package net.meatwo310.mdk.build
+
+import org.gradle.api.Project
 import org.gradle.api.artifacts.MinimalExternalModuleDependency
 import org.gradle.api.artifacts.VersionCatalog
 import org.gradle.api.artifacts.VersionCatalogsExtension
 import org.gradle.api.provider.Provider
-import org.gradle.api.Project
 import org.gradle.kotlin.dsl.getByType
 
 enum class VersionCatalogLibrary(val alias: String) {
+    FabricApi("fabric-api"),
     FabricLoader("fabric-loader"),
+    ForgeConfigApiPortCommon("forge-config-api-port-common"),
+    ForgeConfigApiPortCommonNeoForgeApi("forge-config-api-port-common-neoforge-api"),
+    ForgeConfigApiPortFabric("forge-config-api-port-fabric"),
     Minecraft("minecraft"),
     Mixin("mixin"),
     ParchmentData("parchment-data"),
